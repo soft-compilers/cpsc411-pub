@@ -98,7 +98,7 @@
           (begin effect ... value)
           (if pred value value)]
   [effect (set! aloc value)
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 aloc]
   [triv  opand label]
@@ -131,7 +131,7 @@
   [value  triv
           (binop opand opand)]
   [effect (set! aloc value)
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 aloc]
   [triv  opand label]
@@ -163,7 +163,7 @@
   [value  triv
           (binop opand opand)]
   [effect (set! loc value)
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -198,7 +198,7 @@
         (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -237,7 +237,7 @@
         (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -278,7 +278,7 @@
         (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -320,7 +320,7 @@
         (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -362,7 +362,7 @@
         (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [opand int64 loc]
   [triv  opand label]
@@ -396,7 +396,7 @@
          (if pred tail tail)]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))
-          (begin effect ... effect)
+          (begin effect ...)
           (if pred effect effect)]
   [triv  opand label]
   [opand int64 loc]
