@@ -147,6 +147,7 @@
     (match (cons is tail)
       [(cons '() _) tail]
       [(cons '(begin) _) tail] ; Happens due to interface mismatch between make-begin and make-begin-effect
+      [(cons _ `(begin)) is]
       [(cons `(begin ,is1 ...)
              `(begin ,is2 ... ,tail))
        (loop (append is1 is2) tail)]
