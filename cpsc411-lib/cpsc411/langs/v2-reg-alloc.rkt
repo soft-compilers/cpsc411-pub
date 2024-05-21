@@ -29,7 +29,7 @@
   [effect (set! aloc triv)
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [aloc  aloc?]
   [int64 int64?]
@@ -54,7 +54,7 @@
   [effect (set! aloc triv)
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [aloc  aloc?]
   [int64 int64?]
