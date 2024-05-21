@@ -18,7 +18,7 @@
 #:literals (name? int61? uint8? ascii-char-literal?)
 #:datum-literals (module lambda define apply let if void error * + - eq? < <= >
                          >= fixnum? boolean? empty? void? ascii-char? error? not
-                         call make-vector vector-length vector-set! vector-ref
+                         call empty make-vector vector-length vector-set! vector-ref
                          car cons cdr vector? pair?)
 [p     (module (define x (lambda (x ...) value)) ... value)]
 [value triv
@@ -27,12 +27,23 @@
        (call value value ...)]
 [triv  x fixnum #t #f empty (void) (error uint8) ascii-char-literal]
 [x     name? prim-f]
-[prim-f * + - < <= > >= eq?
-        fixnum? boolean? empty? void? ascii-char? error? not
-        pair? vector? cons car cdr make-vector vector-length vector-set! vector-ref]
+[prim-f binop unop]
+[binop  * + - eq? < <= > >=]
+[unop   fixnum? boolean? empty? void? ascii-char? error? not
+        pair?
+        vector?
+
+        cons
+        car
+        cdr
+
+        make-vector
+        vector-length
+        vector-set!
+        vector-ref]
+[fixnum int61?]
 [uint8 uint8?]
 [ascii-char-literal ascii-char-literal?]
-[fixnum int61?]
 ]
 
 (define (interp-exprs-lang-v8 x)
@@ -51,8 +62,9 @@
        (let ([aloc value] ...) value)
        (if value value value)]
 [triv  label aloc prim-f fixnum #t #f empty (void) (error uint8) ascii-char-literal]
-[prim-f * + - < <= > >= eq?
-        fixnum? boolean? empty? void? ascii-char? error? not
+[prim-f binop unop]
+[binop  * + - eq? < <= > >=]
+[unop   fixnum? boolean? empty? void? ascii-char? error? not
         pair? vector? cons car cdr make-vector vector-length vector-set! vector-ref]
 [aloc aloc?]
 [label label?]
@@ -71,9 +83,13 @@
                          unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
                          unsafe-fx>=
 
-                         not pair? vector?
+                         not
+                         pair?
+                         vector?
 
-                         cons unsafe-car unsafe-cdr
+                         cons
+                         unsafe-car
+                         unsafe-cdr
 
                          unsafe-make-vector
                          unsafe-vector-length
@@ -94,18 +110,19 @@
        (begin effect ... value)]
 [effect (primop value ...) (begin effect ... effect)]
 [triv   label aloc fixnum #t #f empty (void) (error uint8) ascii-char-literal]
-[primop  unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
-         unsafe-fx>=
-
-         fixnum? boolean? empty? void? ascii-char? error? not
-         pair? vector?
-
-         cons unsafe-car unsafe-cdr
-
-         unsafe-make-vector
-         unsafe-vector-length
-         unsafe-vector-set!
-         unsafe-vector-ref]
+[primop binop unop]
+[binop  unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
+        unsafe-fx>=]
+[unop   fixnum? boolean? empty? void? ascii-char? error? not
+        pair?
+        vector?
+        cons
+        unsafe-car
+        unsafe-cdr
+        unsafe-make-vector
+        unsafe-vector-length
+        unsafe-vector-set!
+        unsafe-vector-ref]
 [aloc aloc?]
 [label label?]
 [fixnum int61?]

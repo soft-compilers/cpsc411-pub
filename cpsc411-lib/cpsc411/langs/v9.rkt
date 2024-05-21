@@ -28,8 +28,9 @@
 [triv  x fixnum #t #f empty (void) (error uint8) ascii-char-literal
       (lambda (x ...) value)]
 [x     name? prim-f]
-[prim-f * + - < <= > >= eq?
-        fixnum? boolean? empty? void? ascii-char? error? not
+[prim-f binop unop]
+[binop  * + - eq? < <= > >=]
+[unop   fixnum? boolean? empty? void? ascii-char? error? not
         pair?
         procedure?
         vector?
