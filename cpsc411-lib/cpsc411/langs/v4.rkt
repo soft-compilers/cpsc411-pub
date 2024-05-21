@@ -31,7 +31,7 @@
          (binop triv triv)
          (let ([x value] ...) value)
          (if pred value value)]
-  [triv int64 x]
+  [triv  x int64]
   [x     name?]
   [binop * +]
   [relop < <= = >= > !=]
@@ -58,7 +58,7 @@
          (binop triv triv)
          (let ([aloc value] ...) value)
          (if pred value value)]
-  [triv int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [relop < <= = >= > !=]
   [aloc aloc?]
@@ -89,7 +89,7 @@
           (set! aloc value)
           (if pred effect effect)
           (begin effect ... effect)]
-  [triv   int64 aloc]
+  [triv   aloc int64]
   [binop  * +]
   [relop  < <= = >= > !=]
   [aloc   aloc?]
@@ -118,7 +118,7 @@
           (set! aloc value)
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv   int64 aloc]
+  [triv   aloc int64]
   [binop  * +]
   [relop  < <= = >= > !=]
   [aloc   aloc?]
@@ -147,7 +147,7 @@
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv int64 aloc]
+  [triv aloc int64]
   [binop * +]
   [relop < <= = >= > !=]
   [aloc aloc?]
@@ -178,7 +178,7 @@
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv int64 aloc]
+  [triv aloc int64]
   [binop * +]
   [relop < <= = >= > !=]
   [aloc   aloc?]
@@ -213,7 +213,7 @@
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv int64 aloc]
+  [triv aloc int64]
   [binop * +]
   [relop < <= = >= > !=]
   [aloc aloc?]
@@ -248,7 +248,7 @@
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv int64 aloc]
+  [triv aloc int64]
   [binop * +]
   [relop < <= = >= > !=]
   [aloc  aloc?]
@@ -285,7 +285,7 @@
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv int64 aloc]
+  [triv aloc int64]
   [rloc reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -317,7 +317,7 @@
           (set! loc_1 (binop loc_1 triv))
           (begin effect ... effect)
           (if pred effect effect)]
-  [triv  int64 loc]
+  [triv  loc int64]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -349,8 +349,8 @@
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))]
   [triv  opand label]
-  [opand int64 loc]
-  [trg   label loc]
+  [opand loc int64]
+  [trg   loc label]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -377,8 +377,8 @@
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 opand))]
   [triv  opand label]
-  [opand int64 loc]
-  [trg   label loc]
+  [opand loc int64]
+  [trg   loc label]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -407,8 +407,8 @@
          (compare loc opand)
          (jump-if relop trg)]
   [triv  opand label]
-  [opand int64 loc]
-  [trg   label loc]
+  [opand loc int64]
+  [trg   loc label]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -440,7 +440,7 @@
          (jump-if relop label)]
   [trg   reg label]
   [triv  trg int64]
-  [opand int64 reg]
+  [opand reg int64]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r10 r11 r12 r13 r14 r15]
   [binop * +]
@@ -473,7 +473,7 @@
          (jump-if relop pc-addr)]
   [trg   reg pc-addr]
   [triv  trg int64]
-  [opand int64 reg]
+  [opand reg int64]
   [loc   reg addr]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r10 r11 r12 r13 r14 r15]
   [addr  (fbp - dispoffset)]
@@ -505,7 +505,7 @@
          (jump-if relop label)]
   [trg   reg label]
   [triv  trg int64]
-  [opand int64 reg]
+  [opand reg int64]
   [loc   reg addr]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r10 r11 r12 r13 r14 r15]
   [addr  (fbp - dispoffset)]

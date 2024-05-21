@@ -21,7 +21,7 @@
   [value triv
          (binop triv triv)
          (let ([x value] ...) value)]
-  [triv int64 x]
+  [triv x int64]
   [x name?]
   [binop * +]
   [int64 int64?]
@@ -37,7 +37,7 @@
   [value triv
          (binop triv triv)
          (let ([aloc value] ...) value)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [aloc aloc?]
   [int64 int64?]
@@ -56,7 +56,7 @@
           (begin effect ... value)]
   [effect (set! aloc value)
           (begin effect ... effect)]
-  [triv   int64 aloc]
+  [triv   aloc int64]
   [binop  * +]
   [aloc   aloc?]
   [int64 int64?]
@@ -74,7 +74,7 @@
           (binop triv triv)]
   [effect (set! aloc value)
           (begin effect ... effect)]
-  [triv   int64 aloc]
+  [triv   aloc int64]
   [binop  * +]
   [aloc   aloc?]
   [int64 int64?]

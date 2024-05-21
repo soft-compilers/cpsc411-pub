@@ -30,7 +30,7 @@
        (let ([x value] ...) value)
        (if pred value value)
        (call x value ...)]
-[triv  int64 x]
+[triv  x int64]
 [x     name?]
 [binop * + -]
 [relop < <= = >= > !=]
@@ -56,7 +56,7 @@
        (call triv value ...)
        (let ([aloc value] ...) value)
        (if pred value value)]
-[opand int64 aloc]
+[opand aloc int64]
 [triv  opand label]
 [binop * + -]
 [relop < <= = >= > !=]
@@ -88,7 +88,7 @@
        (let ([aloc value] ...) value)
        (if pred value value)
        (call triv value ...)]
-[opand int64 aloc]
+[opand aloc int64]
 [triv opand label]
 [binop * + -]
 [relop < <= = >= > !=]

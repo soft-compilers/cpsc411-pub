@@ -377,7 +377,7 @@
        (if value value value)
        (begin effect ... value)]
 [effect (primop value ...) (begin effect ... effect)]
-[triv  label aloc fixnum #t #f empty (void) (error uint8)
+[triv  aloc label fixnum #t #f empty (void) (error uint8)
        ascii-char-literal]
 [primop  unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
          unsafe-fx>=
@@ -432,7 +432,7 @@
        (if value value value)
        (begin effect ... value)]
 [effect (primop value ...) (begin effect ... effect)]
-[triv  label aloc fixnum #t #f empty (void) (error uint8)
+[triv  aloc label fixnum #t #f empty (void) (error uint8)
        ascii-char-literal]
 [primop  unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
          unsafe-fx>=
@@ -487,7 +487,7 @@
        (if value value value)
        (begin effect ... value)]
 [effect (primop value ...) (begin effect ... effect)]
-[triv  label aloc fixnum #t #f empty (void) (error uint8)
+[triv  aloc label fixnum #t #f empty (void) (error uint8)
        ascii-char-literal]
 [primop  unsafe-fx* unsafe-fx+ unsafe-fx- eq? unsafe-fx< unsafe-fx<= unsafe-fx>
          unsafe-fx>=

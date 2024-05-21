@@ -24,7 +24,7 @@
   [effect (set! aloc triv)
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [aloc  aloc?]
   [int64 int64?]
@@ -44,7 +44,7 @@
   [effect (set! aloc triv)
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [binop * +]
   [aloc  aloc?]
   [int64 int64?]
@@ -70,7 +70,7 @@
   [effect (set! aloc triv)
           (set! aloc_1 (binop aloc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 aloc]
+  [triv  aloc int64]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -91,7 +91,7 @@
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 triv))
           (begin effect ... effect)]
-  [triv  int64 loc]
+  [triv  loc int64]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
@@ -109,7 +109,7 @@
   [p     (begin effect ... (halt triv))]
   [effect (set! loc triv)
           (set! loc_1 (binop loc_1 triv))]
-  [triv  int64 loc]
+  [triv  loc int64]
   [loc   reg fvar]
   [reg   rsp rbp rax rbx rcx rdx rsi rdi r8 r9 r12 r13 r14 r15]
   [binop * +]
