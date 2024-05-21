@@ -17,8 +17,8 @@
 @define-grammar/pred[exprs-lang-v7
 #:literals (name? int61? uint8? ascii-char-literal?)
 #:datum-literals (module lambda define let if void error * + - eq? < <= >
-                 >= fixnum? boolean? empty? void? ascii-char? error? not
-                 call empty)
+                         >= fixnum? boolean? empty? void? ascii-char? error? not
+                         call empty)
 [p     (module (define x (lambda (x ...) value)) ... value)]
 [value triv
        (let ([x value] ...) value)
@@ -29,9 +29,9 @@
 [prim-f binop unop]
 [binop  * + - eq? < <= > >=]
 [unop   fixnum? boolean? empty? void? ascii-char? error? not]
+[fixnum int61?]
 [uint8 uint8?]
 [ascii-char-literal ascii-char-literal?]
-[fixnum int61?]
 ]
 
 (module safe-langs racket/base
@@ -97,9 +97,9 @@
 [unop   fixnum? boolean? empty? void? ascii-char? error? not]
 [aloc aloc?]
 [label label?]
+[fixnum int61?]
 [uint8 uint8?]
 [ascii-char-literal ascii-char-literal?]
-[fixnum int61?]
 ]
 
 (define (interp-exprs-unique-lang-v7 x)
