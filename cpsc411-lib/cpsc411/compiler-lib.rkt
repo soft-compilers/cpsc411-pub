@@ -300,6 +300,7 @@
   (match type
     ['unix 1]
     ['macosx (macos-prefix #x4)]
+    ['windows 0]
     [_ (error "This case should never happen; windows is special")]))
 
 ; The value of the exit system call, as a decimal integer.
@@ -307,12 +308,14 @@
   (match type
     ['unix 60]
     ['macosx (macos-prefix #x1)]
+    ['windows 0]
     [_ (error "This case should never happen; windows is special")]))
 
 (define (sys-mmap [type (system-type)])
   (match type
     ['unix 9]
     ['macosx (macos-prefix 197)]
+    ['windows 0]
     [_ (error "This case should never happen; windows is special")]))
 
 (define mmap-read #x01)
