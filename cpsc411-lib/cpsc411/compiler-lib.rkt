@@ -321,11 +321,12 @@
 (define mmap-read #x01)
 (define mmap-write #x2)
 (define mmap-private #x2)
-;(define mmap-anonymous
-;  (match (system-type)
-;    ['unix #x20]
-;    ['macosx #x1000]
-;    [_ (error "This case should never happen; windows is special")]))
+(define mmap-anonymous
+  (match (system-type)
+    ['unix #x20]
+    ['macosx #x1000]
+    ['windows #x0] ; Dummy number, windows is special.
+    [_ (error "This case should never happen.")]))
 
 ; A parameter representing the current stack size in bytes
 ; Default is 8MB, which should be plenty.
